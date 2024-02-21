@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array Simulator</title>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body
+    class="bg-slate-800 flex justify-center items-center h-[100vh] w-[100vw]"
+  >
+    <div class="p-3">
+      <input
+        type="text"
+        id="inputpara"
+        placeholder="Enter anything ..."
+        class="text-xl"
+      />
+      <div class="flex flex-col gap-3 mt-5 px-8">
+        <button id="addBtn" class="bg-red-400">Add to Array</button>
+        <button id="printBtn" class="bg-green-500">Print Array</button>
+        <button id="clearBtn" class="bg-blue-500">Clear the Array</button>
+      </div>
+      <div class="mt-8 ml-2">
+        <p id="resultPara" class="text-white lg:text-xs sm:text-xl"></p>
+        <p id="printPara" class="text-white lg:text-xs sm:text-xl"></p>
+        <p id="clearPara" class="text-white lg:text-xs sm:text-xl"></p>
+      </div>
+    </div>
+
+    <script src="script.js">
+            let inputPara = document.querySelector("#inputpara");
+      let addBtn = document.querySelector("#addBtn");
+      let printBtn = document.querySelector("#printBtn");
+      let resultPara = document.querySelector("#resultPara");
+      let printPara = document.querySelector("#printPara");
+      let clearBtn = document.querySelector("#clearBtn");
+      let clearPara = document.querySelector("#clearPara");
+
+      let arr = [];
+
+      addBtn.addEventListener("click", () => {
+        if (inputPara.value.trim() == "") {
+          resultPara.textContent = "Please enter a value :(";
+          clearPara.textContent = "";
+          printPara.textContent = "";
+        } else {
+          arr.push(inputPara.value);
+          resultPara.textContent = `${inputPara.value} has been added sucessfully in Array !`;
+          alert(`${inputPara.value} has been added sucessfully in Array !`);
+          inputPara.value = "";
+          printPara.textContent = "";
+          clearPara.textContent = "";
+        }
+      });
+
+      printBtn.addEventListener("click", () => {
+        resultPara.textContent = "";
+        printPara.textContent = ` Your array's value are : ${arr}  `;
+        clearPara.textContent = "";
+      });
+
+      clearBtn.addEventListener("click", () => {
+        arr.length = 0;
+        printPara.textContent = "";
+        resultPara.textContent = "";
+        clearPara.textContent = "Array has been cleared successfully !";
+      });
+    </script>
+  </body>
+</html>
